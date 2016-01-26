@@ -1,0 +1,6 @@
+*.swp
+log
+tmp
+.DS_Store
+slit
+.ruby-version

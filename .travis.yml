@@ -1,0 +1,17 @@
+language: go
+go:
+  - 1.3
+  - 1.4
+  - 1.5
+  - tip
+after_success:
+  - go build -o slit-linux-amd64
+deploy:
+  provider: releases
+  api_key:
+    secure: gtW1Aqg6ikIzMPmxddSymjULqofJjztMHCvK/SDU7skp96DD5emZOw0AJta8M2MKSoIuHtKoRy1I5xmzpqW1UY1Q7g39iI1Or2aML0ZYvVjNhygR988PX3cmLDBH+ubqksMtWRkll8hTclGuFPUcRuRyQWJwLosVPhJuO28PEVZb2Cr58Z90yYr/bBN+hl74IiSqRLeRmXwLUyIAZwS/uR+ZXe5ZMjAQ2MmFvtqH8ycUo/tMAO3GwJCTWXqEu+1JViXejd8pndTyZ2PwPFi3C7iUtJpnFGlAOdF3Ik1XR2wwEIGGeu/VrfzbHfSaZ7ZIrVpa2GeW7a6uPbnmQdUVQ6bZwgVCT1qOcRXDsq6qco6L3Qq7QZ4aupQbloet4tRiUU03Vr11zfGVkQbXVLgwlkIU70jSNK1D8jxxu1XbKjGAg8d5vzuCFh0+t9nrray98hLP0SZG5P7JnqggykVzN8EINfO8c8fK2pTOQZaXXL8gW8tDVBbTWSutcdb93hyYmdErN1qooYs5t4lQZXxjuWJUekGRe3Um5jckHUJuJEDS2pPL4ShJgi5Ek4T7vylN5P9GJZ4pPrhnnqaEQ1ctaqqXcrt1K5kdCJLBwTimv6TJMPe+wfrv/1NYaYHAPjhMSmvwXcBcQsBTg9L4w4vXA4o2A8ks5LPoOc6ySV5TR0Q=
+  file:
+    - slit-linux-amd64
+  on:
+    tags: true
+    go: 1.5
