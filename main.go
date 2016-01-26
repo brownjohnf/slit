@@ -11,8 +11,8 @@ import (
 )
 
 var f = flag.String("f", "1", "field(s) to select")
-var s = flag.Int("s", 0, "lines to skip (headers, etc")
-var d = flag.String("d", "", "delimiter on which to split columns")
+var s = flag.Int("s", 0, "lines to skip (headers, etc)")
+var d = flag.String("d", "", "delimiter on which to split columns (defaults to whitespace)")
 var v = flag.Bool("v", false, "verbose errors")
 
 func main() {

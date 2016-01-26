@@ -12,6 +12,17 @@ go install github.com/brownjohnf/goutils/slit
 
 ## Usage
 
+```
+Usage of slit:
+  -d string
+        delimiter on which to split columns (defaults to whitespace)
+  -f string
+        field(s) to select (default "1")
+  -s int
+        lines to skip (headers, etc)
+  -v    verbose errors
+```
+
 From stdout:
 
 ```
