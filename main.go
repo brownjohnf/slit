@@ -1,4 +1,4 @@
-// Addup adds integers in columns from stdin
+// slit is like cut, but smarter.
 package main
 
 import (
@@ -13,6 +13,7 @@ import (
 var f = flag.String("f", "1", "field(s) to select")
 var s = flag.Int("s", 0, "lines to skip (headers, etc)")
 var d = flag.String("d", "", "delimiter on which to split columns (defaults to whitespace)")
+var od = flag.String("D", " ", "delimiter to use in output")
 var v = flag.Bool("v", false, "verbose errors")
 
 func main() {
@@ -33,12 +34,10 @@ func main() {
 
 		var out []string
 		var fields []string
-		delim := "\t"
 
 		// Unless a delimiter was passed, split on whitespace
 		if *d != "" {
 			fields = strings.Split(input.Text(), *d)
-			delim = *d
 		} else {
 			fields = strings.Fields(input.Text())
 		}
@@ -64,6 +63,6 @@ func main() {
 		}
 
 		// Write-out the row's output
-		fmt.Println(strings.Join(out, delim))
+		fmt.Println(strings.Join(out, *od))
 	}
 }
