@@ -25,7 +25,6 @@ func main() {
 	input := bufio.NewScanner(os.Stdin)
 
 	for input.Scan() {
-
 		line++
 
 		// Skip this line if it's part of the preamble count
@@ -45,14 +44,15 @@ func main() {
 			fields = strings.Fields(input.Text())
 		}
 
-		for i, _ := range fields {
+		for i, val := range fields {
 			var skip bool
 
 			if *F != "" {
 				for _, n := range exclude {
 					num, err := strconv.Atoi(n)
 					if err != nil {
-						fmt.Println(os.Stderr, err)
+						fmt.Fprintln(os.Stderr, err)
+
 						os.Exit(2)
 					}
 
@@ -68,21 +68,25 @@ func main() {
 			}
 
 			if *f == "" {
-				out = append(out, fields[i])
+				out = append(out, val)
+
 				continue
 			}
 
+			len_fields := len(fields)
 			for _, n := range include {
 				num, err := strconv.Atoi(n)
 				if err != nil {
-					fmt.Println(os.Stderr, err)
+					fmt.Fprintln(os.Stderr, err)
+
 					os.Exit(2)
 				}
 
-				if len(fields) < num {
+				if len_fields < num {
 					if *v {
 						fmt.Fprintf(os.Stderr, "%d: Insufficient fields: %v; skipping\n", line, f)
 					}
+
 					continue
 				}
 
